@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "SignIn";
+}
+@section scripts{
+<script src="~/js/jquery-1.10.2.js"></script>
+    <script>    
+        $(function () {
+            $("#mybtn").click(function () {
+                var v = $("#mail").val();
+                if (v.length < 1) {
+                    alert("Enter your Email");
+                }
+                else {
+                    var regx = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+                    if (regx.test(v)) {
+                        v = document.getElementById("password").value;
+                        if (v.length < 5)
+                            alert("Enter Password of atleast length 5");
+                        else {
+                            var d = { "mail": document.getElementById("mail").value, "password": document.getElementById("password").value };
+                            var settings = ({
+                                url: "/SignIn/admin",
+                                type: "Post",
+                                datatype: "json",
+                                data: d,
+                                success: function (resp) {
+                                    if (resp.valid == true) {
+                                        alert("Welcome!Successfull Sign In ");
+                                        location.href = resp.urlToRedirect;
+                                    }
+                                    else
+                                        alert("Invalid Login/Password");
+                                },
+                                error: function (e) {
+                                    alert("Some error occured");
+                                }
+                            });
+                            $.ajax(settings);
+                            return false;
+                        }
+                    }
+                    else
+                        alert("Enter valid Email Format(something@domain)");
+                }
+            });
+        });
+    </script>
+}
+
+<div>
+    <h1 style="margin-left:47%;margin-top:200px;font-size:xx-large;color:ghostwhite;">Sign In</h1><br /><br /><br /><br />
+    <div style="margin-left:45%;">
+        <input style="height:20px;" id="mail" type="text" placeholder="Enter your email" />
+        <br />
+        <br />
+        <input style="height:20px;" id="password" type="password" placeholder="Enter your password" />
+        <br /><br />
+        <br />
+        <input style="margin-left:50px;width:80px;height:30px;color:ghostwhite;background-color:transparent;" type="submit" id="mybtn" value="Sign In" />
+    </div>
+</div>

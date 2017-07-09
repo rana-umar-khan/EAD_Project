@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+
+        <style > body {
+            font: 30px, sans-serif;
+            line-height: 1.3;
+            color: #2f2f2f;
+            background: #808080;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+
+        .margin {
+            margin-bottom: 45px;
+        }
+
+        .bg-1 {
+            background-color: #1abc9c; /* Green */
+            color: #ffffff;
+        }
+
+        .bg-2 {
+            background-color: #474e5d; /* Dark Blue */
+            color: #ffffff;
+        }
+
+        .bg-3 {
+            background-color: #474e5d; /* White */
+            color: #555555;
+        }
+
+        .bg-4 {
+            background-color: #2f2f2f; /* Black Gray */
+            color: #fff;
+        }
+
+        .container-fluid {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .navbar {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border: 0;
+            border-radius: 0px;
+            margin-bottom: 0px;
+            font-size: 15px;
+        }
+
+            .navbar-brand {
+                
+                font-size:20px;
+                font-family: "Allerta Stencil", Sans-serif;
+            }
+
+            .navbar-nav li a:hover {
+                color: #1abc9c !important;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="color:white;" href="#">Attendance Management System</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="margin-left:100px">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li id="mark_attendance">@Html.ActionLink("Mark Attendance", "Mark Attendance", "Attendance")</li>
+                    <li id="view_attendance">@Html.ActionLink("View Attendance", "View Attendance", "Attendance")</li>
+                    @{
+                        if (Session["login"] != null)
+                        {
+
+                            <li style="color:red" id="logout">@Html.ActionLink("Logout", "Logout", "Home")</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @*</head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Attendance Management System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li id="mark_attendance">@Html.ActionLink("Mark Attendance", "Mark Attendance", "Attendance")</li>
+                        <li id="view_attendance">@Html.ActionLink("View Attendance", "View Attendance", "Attendance")</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Attendance Management System</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

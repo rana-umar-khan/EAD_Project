@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "CoursesView";
+}
+
+<h2>CoursesView</h2>
+
+@{ 
+    var obj = (List<Models.CourseDTO>)ViewBag.courses;
+    for (int i = 0; i < obj.Count; i++)
+    {
+        <span>@obj[i].CouName</span>
+        <hr />
+    }
+}

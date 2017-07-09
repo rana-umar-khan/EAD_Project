@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+
+<div class="jumbotron">
+    <label class="lead">@Session["Name"]</label>
+    <p>This is your Dashboard</p>
+</div>
+@{
+    var obj = (List<Models.CourseDTO>)ViewBag.courses;
+    for (int i = 0; i < obj.Count; i++)
+    {
+        <span>@obj[i].CouName</span>
+        <hr />
+    }
+}
+    <input class="btn btn-default" value="Mark Attendance" size="50" height="50" />
+    <input class="btn btn-default" contenteditable="false" value="View Attendance" />
+    <input class="btn btn-default" contenteditable="false" value="Update Profile" />
+    <input class="btn btn-warning" contenteditable="false" value="Logout" />
