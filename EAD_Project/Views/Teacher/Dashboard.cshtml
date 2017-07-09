@@ -5,18 +5,40 @@
 
 
 <div class="jumbotron">
-    <label class="lead">@Session["Name"]</label>
-    <p>This is your Dashboard</p>
+    <div class="row">
+        <div class="col-sm-9">
+            <h1 class="h1"> @Session["Name"]</h1>
+            <p>This is your Dashboard</p>
+        </div>
+        <div class="col-sm-3">
+            @{
+                if (Session["login"] != null)
+                {
+
+                    <input class="btn btn-warning" style="background-color:red" id="logout" value="Logout">
+                }
+            }
+        </div>
+    </div>
+    
+   
+    
 </div>
-@{
-    var obj = (List<Models.CourseDTO>)ViewBag.courses;
-    for (int i = 0; i < obj.Count; i++)
-    {
-        <span>@obj[i].CouName</span>
-        <hr />
+<h3 class="h3">Courses</h3>
+<div class="table-bordered" style="border:double;border-color:black;padding:20px;margin-bottom:10px">
+    @{
+        var obj = (List<Models.CourseDTO>)ViewBag.courses;
+        for (int i = 0; i < obj.Count; i++)
+        {
+            
+            <div class="well well-sm" style="padding:20px">
+                <p>@obj[i].CouName</p>
+                <input  class="btn btn-default" value="Mark Attendance" id="mark+@i" />
+                <input class="btn btn-default" contenteditable="false" id="view+@i" value="View Attendance"/>
+            </div>
+        }
     }
-}
+</div>
     <input class="btn btn-default" value="Mark Attendance" size="50" height="50" />
-    <input class="btn btn-default" contenteditable="false" value="View Attendance" />
     <input class="btn btn-default" contenteditable="false" value="Update Profile" />
     <input class="btn btn-warning" contenteditable="false" value="Logout" />
