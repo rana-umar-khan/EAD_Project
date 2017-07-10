@@ -15,7 +15,7 @@
                 if (Session["login"] != null)
                 {
 
-                    <input class="btn btn-warning" style="background-color:red" id="logout" value="Logout">
+                    <input class="btn btn-warning" type="button" style="background-color:red" id="logout1" value="Logout">
                 }
             }
         </div>
@@ -39,6 +39,23 @@
         }
     }
 </div>
-    <input class="btn btn-default" value="Mark Attendance" size="50" height="50" />
-    <input class="btn btn-default" contenteditable="false" value="Update Profile" />
-    <input class="btn btn-warning" contenteditable="false" value="Logout" />
+<input type="button" class="btn btn-default" contenteditable="false" value="Update Profile" />
+<input class="btn btn-warning" contenteditable="false" value="Logout"  />
+
+@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script>
+        $(function () {
+            $("#logout1").click(function () {
+                var setting = ({
+                    url: "/Home/logout",
+                    type: "Post"
+                });
+                $.ajax(setting);
+                return false;
+
+            });
+        });
+</script>
+
+}

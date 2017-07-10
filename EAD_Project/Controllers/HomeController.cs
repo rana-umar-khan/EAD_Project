@@ -26,11 +26,18 @@ namespace EAD_Project.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Attendance Management System";
 
             return View();
         }
-       
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Phone # (+92)304-2672145";
+
+            return View();
+        }
+
         [HttpPost]
         public ActionResult SignIn(string email, string password, string remember)
         {
@@ -69,6 +76,7 @@ namespace EAD_Project.Controllers
         {
             Session["login"] = null;
             Session.Abandon();
+            //cookie.Value = "invalid";
             return Redirect("~/Home/Index");
         }
         

@@ -1,6 +1,6 @@
-create database attendance;
+--create database attendance;
 
-use attendance;
+use dbad4a8875b4eb45e98a87a7ab0105eb53;
 
 CREATE TABLE [Student] (
     [StuId]     INT          NOT NULL,

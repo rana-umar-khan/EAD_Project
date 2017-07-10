@@ -88,8 +88,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="margin-left:100px">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li id="mark_attendance">@Html.ActionLink("Mark Attendance", "Mark Attendance", "Attendance")</li>
-                    <li id="view_attendance">@Html.ActionLink("View Attendance", "View Attendance", "Attendance")</li>
+                    <li id="mark_attendance">@Html.ActionLink("About", "About", "Home")</li>
+                    <li id="view_attendance">@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @{
                         if (Session["login"] != null)
                         {
@@ -131,7 +131,23 @@
                 <p>&copy; @DateTime.Now.Year - Attendance Management System</p>
             </footer>
         </div>
+    @section scripts{
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script>
+        $(function () {
+            $("#logout").click(function () {
+                var setting = ({
+                    url: "/Home/logout",
+                    type: "Post"
+                });
+                $.ajax(setting);
+                return false;
 
+            });
+        });
+        </script>
+
+    }
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
